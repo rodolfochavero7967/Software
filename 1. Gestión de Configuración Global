@@ -1,0 +1,51 @@
+1. Gestión de Configuración Global
+Patrón utilizado: Singleton
+
+Para garantizar que haya un solo objeto de configuración accesible en toda la aplicación, el patrón Singleton es la opción ideal. Con este enfoque, evitamos problemas de concurrencia y duplicación de datos de configuración en memoria.
+
+Implementación: Creamos una clase de configuración como Singleton que maneja todas las configuraciones globales. Esta clase tiene métodos estáticos para acceder y actualizar configuraciones según sea necesario.
+Beneficio: Se asegura una única fuente de verdad para los datos de configuración, evitando posibles conflictos y manteniendo los datos centralizados y controlados.
+2. Creación Dinámica de Objetos Basada en la Entrada del Usuario
+Patrón utilizado: Factory Method
+
+Para la creación dinámica de distintos tipos de elementos de la UI, usamos el patrón Factory. Esto nos da flexibilidad para instanciar distintos componentes en función de la entrada del usuario sin modificar el código existente cada vez que agregamos un nuevo tipo de componente.
+
+Implementación: Una clase Factory centraliza la lógica de creación de elementos de la UI. A medida que la entrada del usuario cambia, la Factory crea instancias del tipo correcto de componente según lo solicitado.
+Beneficio: El uso del patrón Factory facilita agregar nuevos elementos sin tener que reescribir lógica, manteniendo el código más limpio y menos propenso a errores.
+3. Notificación de Cambio de Estado en Componentes del Sistema
+Patrón utilizado: Observer
+
+Para manejar notificaciones de cambio de estado entre componentes sin acoplamiento fuerte, aplicamos el patrón Observer. Así, cada componente puede estar "suscrito" a un estado específico y recibir actualizaciones cuando el estado cambia.
+
+Implementación: La clase que maneja el estado actúa como el “Sujeto” y los componentes que necesitan saber del cambio son “Observadores”. Esto permite que los componentes reaccionen a cambios de estado sin dependencia directa entre ellos.
+Beneficio: Desacoplamos la lógica de notificación, lo que resulta en un código modular y más fácil de mantener. Cuando el estado cambia, los observadores se actualizan automáticamente, lo cual mejora la sincronización en la UI.
+4. Gestión Eficiente de Operaciones Asincrónicas
+Patrones utilizados: Mediator y Future/Promise
+
+Para la coordinación de múltiples operaciones asíncronas y asegurar que no bloqueen el flujo de la aplicación principal, aplicamos el patrón Mediator y Future/Promise para manejo de asincronía.
+
+Implementación: El Mediator organiza y coordina la comunicación entre diferentes operaciones asíncronas. Futures y Promises facilitan el manejo de respuestas y posibles errores, de modo que no se interrumpa el flujo de la aplicación.
+Beneficio: Este enfoque evita que las operaciones asíncronas queden entrelazadas, asegurando que los componentes principales continúen operando sin bloqueos ni dependencias complicadas entre ellos.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Simulación de Ejecución del Proyecto
+Este es el enfoque que seguimos para integrar estos patrones en el proyecto de manera eficiente y con una estructura sólida.
+
+Singleton en la Gestión de Configuración Global:
+
+La configuración centralizada asegura que no se dupliquen configuraciones en memoria y que cualquier cambio en la configuración se refleje inmediatamente en toda la aplicación.
+Esto es útil, por ejemplo, en una aplicación de gestión de usuarios donde se usan varias claves API y parámetros de conexión que no deben duplicarse.
+Factory para Creación Dinámica de Objetos:
+
+Con el patrón Factory centralizamos la creación de componentes de la UI, permitiendo una construcción flexible de interfaces dinámicas basadas en las acciones del usuario.
+En un sistema de administración de formularios, esto significa que podemos generar campos de entrada distintos (como texto, fechas o números) según el tipo de datos, mejorando la experiencia del usuario sin duplicar lógica en el código.
+Observer para Notificación de Cambios de Estado:
+
+La sincronización de estados en componentes dependientes mediante el patrón Observer permite que cada componente se mantenga al día sin dependencia directa de otros.
+En un dashboard con varios widgets, por ejemplo, un cambio de estado en el backend se notifica automáticamente a los widgets, sin necesidad de códigos repetitivos o acoplamientos innecesarios.
+Mediator y Future/Promise en Operaciones Asíncronas:
+
+La gestión de varias llamadas API se facilita al coordinar las respuestas sin bloquear el flujo. El Mediator centraliza la lógica de coordinación mientras que Promises se encarga de manejar respuestas y errores.
+En una aplicación de procesamiento de pagos, esto asegura que las notificaciones al usuario y las validaciones de transacciones sucedan sin interrupciones ni errores de sincronización.
